@@ -1,0 +1,4 @@
+name,desc,htmllink:link,listlink:link1,rating,fav,icon
+berry,double,http://yahoo.com,,,
+tackle,what is going on,,/data02.txt,,
+"panerapanera",,3,1,,
