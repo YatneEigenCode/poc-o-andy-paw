@@ -16,8 +16,7 @@ int getOrient3(){
   //rough orientation is max of x,y,z
   sl = AndroidInterface.getSensorListener();
   if ((sl.getZ()>sl.getX()) && (sl.getZ()>sl.getY()) ) return 2;
-  if ((sl.getY()>sl.getX()) && (sl.getY()>sl.getZ()) ) return 1;
-  return 0;
+  return ((sl.getY()>sl.getX()) && (sl.getY()>sl.getZ()) )?  1: 0;
 }
 
 void checkBTconnection(n){
@@ -25,9 +24,7 @@ void checkBTconnection(n){
   mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
   orient = getOrient3();
   //
-  // test code
   String[] msg= {"NOT connected","connecting","connectED","DISconnecting"};
-  //
     for (int i=0; i<n; i++){
       if (getOrient3() != orient) return;
       if (mBluetoothAdapter.isEnabled()) {
@@ -45,8 +42,7 @@ void checkBTconnection(n){
         }
       Thread.sleep(1000);
       }
-    }
-  //
+    }//for
 }
   
 java.util.Date date= new java.util.Date();
@@ -56,7 +52,4 @@ checkBTconnection(9999);
 vibrate(1000);
 print("Done - quit by shaking.");
 
-
-
-//filter1 = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
 
