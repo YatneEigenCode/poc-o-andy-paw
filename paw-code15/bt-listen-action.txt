@@ -24,7 +24,7 @@ service = server.props.get("serviceContext");
 filter1 = new IntentFilter(BluetoothAdapter.ACTION_CONNECTION_STATE_CHANGED);
 filter2 = new IntentFilter(AudioManager.RINGER_MODE_CHANGED_ACTION);  //flaky
 receiver1 = BroadcastReceiverUtil.buildReceiver("source(\"/sdcard/AppProjects/paw-code2015/bt-detect-conn.txt\");");
-receiver2 = BroadcastReceiverUtil.buildReceiver("orient=-1;makeToast(\"B\",\"long\")");
+receiver2 = BroadcastReceiverUtil.buildReceiver("orient=-1;makeToast(\"z\",\"long\")");
 service.registerReceiver(receiver1, filter1);
 service.registerReceiver(receiver2, filter2);
 
@@ -38,7 +38,7 @@ service.unregisterReceiver(receiver2);
 //checkBTconnection(9999);
 //sendMail("jcgm2000@gmail.com", "BT event", "A BT event occurred");  //interactive
 vibrate(1000);
-print("Done - quit by shaking.");?
+print("Done - quit by shaking.");
 
 //android.media.VIBRATE_SETTING_CHANGED
 
