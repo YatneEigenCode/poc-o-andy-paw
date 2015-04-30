@@ -11,19 +11,15 @@ import java.net.URLEncoder.*;
 import de.fun2code.android.pawserver.AndroidInterface;
 
 
+//-----
 int getOrient3(){
   //rough orientation is max of x,y,z
-  sensorListener = AndroidInterface.getSensorListener();
-  int res = 0;
-  float[] val = {0,0,0};
-  val[0]= sensorListener.getX();
-  val[1]= sensorListener.getY();
-  val[2]= sensorListener.getZ();
-  if (val[1]>val[res]) res = 1;
-  if (val[2]>val[res]) res = 2;
-  return res;
+  sl = AndroidInterface.getSensorListener();
+  if ((sl.getZ()>sl.getX()) && (sl.getZ()>sl.getY()) ) return 2;
+  if ((sl.getY()>sl.getX()) && (sl.getY()>sl.getZ()) ) return 1;
+  return 0;
 }
-  
+
 void checkBTconnection(n){
   int prevState=-1, state, orient;
   mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
