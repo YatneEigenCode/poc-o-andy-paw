@@ -1,1 +1,66 @@
-//prep
+//4-28-15 JChoy for demoing in paw beanshell console
+//
+//
+import android.bluetooth.*;
+import android.os.*;
+import android.content.*;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.net.*;
+import java.net.URLEncoder.*;
+import de.fun2code.android.pawserver.AndroidInterface;
+
+
+int getOrient3(){
+  //rough orientation is max of x,y,z
+  sensorListener = AndroidInterface.getSensorListener();
+  int res = 0;
+  float[] val = {0,0,0};
+  val[0]= sensorListener.getX();
+  val[1]= sensorListener.getY();
+  val[2]= sensorListener.getZ();
+  if (val[1]>val[res]) res = 1;
+  if (val[2]>val[res]) res = 2;
+  return res;
+}
+  
+void checkBTconnection(n){
+  int prevState=-1, state, orient;
+  mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+  orient = getOrient3();
+  //
+  // test code
+  String[] msg= {"NOT connected","connecting","connectED","DISconnecting"};
+  //
+    for (int i=0; i<n; i++){
+      if (getOrient3() != orient) return;
+      if (mBluetoothAdapter.isEnabled()) {
+        state=mBluetoothAdapter.getProfileConnectionState( BluetoothProfile.A2DP);
+        if (prevState != state){
+          //makeToast("\nA2DP device is "+ msg[state], "short" );
+          vibrate(200);
+          java.util.Date date= new java.util.Date();
+          String urlStr= "http://rip.okdaily.com"+
+            "/mad/textStore.php?f=set&i=2191&data="+
+            URLEncoder.encode(msg[state]+" "+new Timestamp(date.getTime()));
+          InputStream in = new URL(urlStr).openStream();
+          in.close();
+          prevState = state;
+        }
+      Thread.sleep(1000);
+      }
+    }
+  //
+}
+  
+java.util.Date date= new java.util.Date();
+print( "Started " + new Timestamp(date.getTime()));
+checkBTconnection(9999);
+//sendMail("jcgm2000@gmail.com", "BT event", "A BT event occurred");  //interactive
+vibrate(1000);
+print("Done - quit by shaking.");
+
+
+
+//filter1 = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+
