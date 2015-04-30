@@ -1,0 +1,57 @@
+//4-29-15 JChoy listen for BT ACTION
+//
+//
+import android.bluetooth.*;
+import android.os.*;
+import android.content.*;
+import de.fun2code.android.pawserver.AndroidInterface;
+import de.fun2code.android.pawserver.util.*;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.media.*;
+
+//-----
+int getOrient3(){
+  //rough orientation is max of x,y,z
+  sl = AndroidInterface.getSensorListener();
+  if ((sl.getZ()>sl.getX()) && (sl.getZ()>sl.getY()) ) return 2;
+  if ((sl.getY()>sl.getX()) && (sl.getY()>sl.getZ()) ) return 1;
+  return 0;
+}
+  
+
+service = server.props.get("serviceContext");
+filter1 = new IntentFilter(BluetoothAdapter.ACTION_CONNECTION_STATE_CHANGED);
+filter2 = new IntentFilter(AudioManager.RINGER_MODE_CHANGED_ACTION);  //flaky
+receiver1 = BroadcastReceiverUtil.buildReceiver("source(\"/sdcard/AppProjects/paw-code2015/bt-detect-conn.txt\");");
+receiver2 = BroadcastReceiverUtil.buildReceiver("orient=-1;makeToast(\"B\",\"long\")");
+service.registerReceiver(receiver1, filter1);
+service.registerReceiver(receiver2, filter2);
+
+orient = getOrient3();
+for (int i=0; (i<292) && (getOrient3() == orient; i++)
+      Thread.sleep(1000);
+service.unregisterReceiver(receiver1);
+service.unregisterReceiver(receiver2);
+
+
+//checkBTconnection(9999);
+//sendMail("jcgm2000@gmail.com", "BT event", "A BT event occurred");  //interactive
+vibrate(1000);
+print("Done - quit by shaking.");?
+
+//android.media.VIBRATE_SETTING_CHANGED
+
+/*
+import de.fun2code.android.pawserver.media.*;
+
+cp = CameraPreview.getInstance();
+cp.setSize(320, 240);
+cp.setFile(new File("/sdcard/webcam_test.jpg"));
+cp.setQuality(50);
+cp.setPrintDate(true, "#ffffff", "#55000000");
+cp.setPrintGeoLocation(true, "#ffffff", "#55000000");
+cp.start();
+Thread.sleep(4000);
+cp.stop();
+*/
