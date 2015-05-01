@@ -1,0 +1,91 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1;" />
+<!DOCTYPE html>
+<head>
+	<title>DbFactApp</title>
+	 <link rel="stylesheet" href="roundcorners.css" />
+</head> 
+<body> 
+	<script src="TMNO.js"></script>
+	<script src="CDJD.js"></script>
+	<script src="actioncard.js"></script>
+	<script src="dbapp.js"></script>
+	<script src="swipebob.js"></script>
+	<script src="tweetoff.js"></script>
+	<script>
+function DbFactoryApp(){
+	this.constructor= TweetoffAppWithScript;
+	this.constructor();
+	var _j=new PECBase();	//does not inherit
+	this.preserveSuperMethod= _j.preserveSuperMethod;
+
+	this.preserveSuperMethod("start");
+	this.start= function(){
+		this.super_start();
+		var db = this.dbsky = new DbTableApp().init( 
+		  "sky","initItems", "name,colnames".split(",") );
+		db.getItemDb([1], new OOcallback(this,"gotSkyDb").fcn);
+	}
+	this.gotSkyDb= function(tx, rs){
+		var rec0= rs.rows.item(0);
+		var db = this.dbzsh = new DbTableApp().init( 
+		  rec0["name"], "initItems", rec0["colnames"].split(",") );
+		db.getItemsDb([], new OOcallback(this,"gotAddrRecDb").fcn);
+	}
+	this.gotAddrRecDb= function(tx, rs){
+		_j.d.body.appendChild(_j.d.createElement('div')).innerHTML
+			=rs.rows.item(0)["address"];
+	}
+}
+
+
+
+require=TweetoffApp.require= new Array();
+require.push("OOcallback");
+
+require=DbFactoryApp.require= new Array();
+require.push("TweetoffAppWithScript");
+require.push("PECBase");
+require.push("DbTableApp");
+require.push("OOcallback");
+require.push("TweetoffApp");
+
+checkRequiredClasses = function(clsName,pref){
+	if (!window[clsName]) return pref+":"+clsName+",";
+	var res, require = window[clsName].require;
+	if (!require) return "";
+	for (var i=0,res=""; i<require.length; i++) 
+		res += checkRequiredClasses(require[i],clsName);
+	return res;
+}
+alert(checkRequiredClasses("DbFactoryApp"));
+
+		new DbFactoryApp().init("dbFactApp").start();
+	</script>
+</body>
+
+
+
+<div style="display:none">
+<div id="res.help.command">usage: --[command]:[arg]
+available commands:
+  help
+  showflags
+  countdata
+  listcolors
+
+--help:[command] for help on a specific command
+
+Type command as a message and add it to the list. Then long tap that cell to show menu. Tap menu item with that command shown as 
+"Cmd/[command]:[arg]"
+</div>
+<div id="res.help.showflags">Enable message list as a check list for one particular color. Single tap each message to toggle color on/off. 
+
+E.g.: 
+--showflags:blue to show all messages marking messages that have been flagged as blue. 
+</div>
+<div id="res.help.countdata">Show total count of messages. 
+</div>
+<div id="res.help.listcolors">Show colors available for showflags command.
+</div>
+</div>
+</html> 

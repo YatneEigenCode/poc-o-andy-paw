@@ -1,0 +1,44 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1;" />
+<!DOCTYPE html>
+<head>
+	<title>Tweetoff</title>
+	 <link rel="stylesheet" href="roundcorners.css" />
+</head> 
+<body> 
+	<script src="TMNO.js"></script>
+	<script src="CDJD.js"></script>
+	<script src="actioncard.js"></script>
+	<script src="dbapp.js"></script>
+	<script src="swipebob.js"></script>
+	<script src="moshishare.js"></script>
+	<script src="autolink.js"></script>
+	<script src="tweetoff.js"></script>
+	<script>
+		var tweetoffApp= new TweetoffApp();
+		tweetoffApp.init("tweetoffApp").start();
+	</script>
+</body>
+<div style="display:none">
+<div id="res.help.command">usage: --[command]:[arg]
+available commands:
+  help
+  showflags
+  countdata
+  listcolors
+
+--help:[command] for help on a specific command
+
+Type command as a message and add it to the list. Then long tap that cell to show menu. Tap menu item with that command shown as 
+"Cmd/[command]:[arg]"
+</div>
+<div id="res.help.showflags">Enable message list as a check list for one particular color. Single tap each message to toggle color on/off. 
+
+E.g.: 
+--showflags:blue to show all messages marking messages that have been flagged as blue. 
+</div>
+<div id="res.help.countdata">Show total count of messages. 
+</div>
+<div id="res.help.listcolors">Show colors available for showflags command.
+</div>
+</div>
+</html> 

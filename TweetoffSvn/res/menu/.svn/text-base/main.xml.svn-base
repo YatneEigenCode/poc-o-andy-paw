@@ -1,0 +1,71 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_command"
+        android:orderInCategory="500"
+        android:showAsAction="never"
+        android:title="@string/action_command"/>
+
+
+    <item
+        android:id="@+id/action_data"
+        android:orderInCategory="110"
+        android:showAsAction="never"
+        android:title="@string/action_data">
+        <menu>
+		    <item
+		        android:id="@+id/action_showall"
+		        android:orderInCategory="111"
+		        android:showAsAction="never"
+		        android:title="@string/action_showall" />
+            
+            <item android:id="@+id/action_count" 
+                android:orderInCategory="112" 
+                android:showAsAction="never" 
+                android:title="@string/action_count" />
+            
+		    <item android:id="@+id/action_purge" 
+		        android:orderInCategory="114" 
+		        android:title="@string/action_purge" />
+
+		    <item
+		        android:id="@+id/action_dump"
+		        android:orderInCategory="116"
+		        android:showAsAction="never"
+		        android:title="@string/action_dump"/>
+    
+		    <item
+		        android:id="@+id/action_share"
+		        android:orderInCategory="117"
+		        android:showAsAction="never"
+		        android:title="@string/action_share"/>
+        </menu>
+    </item>
+    
+    <item
+        android:id="@+id/action_control"
+        android:orderInCategory="300"
+        android:showAsAction="never"
+        android:title="@string/action_control">
+        <menu>
+	    <item
+	        android:id="@+id/action_reload"
+	        android:orderInCategory="320"
+	        android:showAsAction="never"
+	        android:title="@string/action_reload"/>
+	    <item
+	        android:id="@+id/action_exit_help"
+	        android:orderInCategory="340"
+	        android:showAsAction="never"
+	        android:title="@string/exit_help"/>
+	    <item
+	        android:id="@+id/action_ping"
+	        android:orderInCategory="360"
+	        android:showAsAction="never"
+	        android:title="@string/action_ping"/>
+	    <item 
+	        android:id="@+id/app_name_ver" 
+	        android:title="@string/app_name_ver"/>
+   		</menu>
+   	</item>
+</menu>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Tweetoff</string>
+    <string name="app_name_ver">Tweetoff v1.419</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="exit_help">Exit App</string>
+    <string name="action_count">Count</string>
+    <string name="action_purge">Purge</string>
+    <string name="action_dump">Dump</string>
+    <string name="action_ping">Ping</string>
+    <string name="action_about">About &gt;</string>
+    <string name="action_share">Share</string>
+    <string name="action_data">Data &gt;</string>
+    <string name="action_control">Control &gt;</string>
+    <string name="action_reload">Reload</string>
+    <string name="action_command">Command</string>
+    <string name="action_showall">Show All</string>
+    
+</resources>
